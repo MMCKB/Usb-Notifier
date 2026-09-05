@@ -1,4 +1,4 @@
-# U 盘助手 
+# 弹盘通（Usb-Notifier）
 
 [![Build](https://github.com/MMCKB/USB--/actions/workflows/build.yml/badge.svg)](https://github.com/MMCKB/USB--/actions/workflows/build.yml)
 [![Release](https://img.shields.io/github/v/release/MMCKB/USB)](https://github.com/MMCKB/USB--/releases)
