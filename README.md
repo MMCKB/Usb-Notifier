@@ -1,7 +1,7 @@
 # U 盘助手 (UsbFlashToast)
 
-[![Build](https://github.com/MMCKB/USB/actions/workflows/build.yml/badge.svg)](https://github.com/MMCKB/USB/actions/workflows/build.yml)
-[![Release](https://img.shields.io/github/v/release/MMCKB/USB)](https://github.com/MMCKB/USB/releases)
+[![Build](https://github.com/MMCKB/USB--/actions/workflows/build.yml/badge.svg)](https://github.com/MMCKB/USB--/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/v/release/MMCKB/USB)](https://github.com/MMCKB/USB--/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%20%2B-0078D4)
 ![.NET](https://img.shields.io/badge/.NET-8.0-512BD4)
@@ -23,12 +23,12 @@
 
 ## 📦 下载
 
-前往 [Releases](https://github.com/MMCKB/USB/releases) 下载最新的 `UsbFlashToast-x.x.x-win-x64.zip`，解压后运行 `UsbFlashToast.exe` 即可（云编译产物为自包含部署，无需安装 .NET 运行时）。
+前往 [Releases](https://github.com/MMCKB/USB--/releases) 下载最新的 `UsbFlashToast-x.x.x-win-x64.zip`，解压后运行 `UsbFlashToast.exe` 即可（云编译产物为自包含部署，无需安装 .NET 运行时）。
 
 ## 🛠 本地构建
 
 ```bash
-git clone https://github.com/MMCKB/USB.git
+git clone https://github.com/MMCKB/USB--.git
 cd USB
 dotnet restore
 dotnet build -c Release --no-restore
