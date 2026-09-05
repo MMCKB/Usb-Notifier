@@ -377,13 +377,13 @@ public partial class App : Application
         items.Add(new BackgroundHost.TrayItem(CmdOverview, "打开 U 盘概览", false, false));
         items.Add(new BackgroundHost.TrayItem(CmdSettings, "设置", false, false));
         items.Add(new BackgroundHost.TrayItem(0, "", false, true));
-        items.Add(new BackgroundHost.TrayItem(CmdExit, "退出 U 盘助手", false, false));
+        items.Add(new BackgroundHost.TrayItem(CmdExit, "退出弹盘通", false, false));
 
         _host.SetTrayMenu(items);
 
         string tip = letters.Count == 0
-            ? "U 盘助手 · 等待设备插入"
-            : $"U 盘助手 · 已连接 {letters.Count} 个设备：{string.Join(" ", letters)}";
+            ? "弹盘通 · 等待设备插入"
+            : $"弹盘通 · 已连接 {letters.Count} 个设备：{string.Join(" ", letters)}";
 
         IntPtr baseIcon = GetTrayIcon(letters);
         if (baseIcon != IntPtr.Zero)

@@ -33,7 +33,7 @@
                 <Path Fill="{ThemeResource AccentFillColorDefaultBrush}"
                       Data="M9 1.5h6v1.8H13.2v4.2h1.8v1.8h5.2a2 2 0 0 1 2 2v9.3a2 2 0 0 1-2 2H3.8a2 2 0 0 1-2-2V11.3a2 2 0 0 1 2-2H9V7.5H7.2V1.5z" />
             </Viewbox>
-            <TextBlock Grid.Column="2" Text="U 盘助手"
+            <TextBlock Grid.Column="2" Text="弹盘通"
                        VerticalAlignment="Center" FontSize="13"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
 

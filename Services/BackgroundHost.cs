@@ -29,7 +29,7 @@ internal sealed class BackgroundHost : IDisposable
     private IntPtr _handle;
     private IntPtr _hNotify;
     private IntPtr _icon;
-    private string _tip = "U 盘助手";
+    private string _tip = "弹盘通";
     private uint _taskbarCreated;
     private CancellationTokenSource? _debounce;
     private IReadOnlyList<TrayItem> _menuItems = Array.Empty<TrayItem>();

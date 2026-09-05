@@ -41,7 +41,7 @@ public sealed partial class OverviewWindow : Window
         _apw = AppWindow.GetFromWindowId(Win32Interop.GetWindowIdFromWindow(_hwnd));
         _presenter = (OverlappedPresenter)_apw.Presenter;
 
-        Title = "U 盘助手";
+        Title = "弹盘通";
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(AppTitleBar);
 
@@ -364,7 +364,7 @@ public sealed partial class OverviewWindow : Window
 
         var dialog = new ContentDialog
         {
-            Title = "关闭 U 盘助手",
+            Title = "关闭弹盘通",
             Content = new StackPanel
             {
                 Spacing = 6,

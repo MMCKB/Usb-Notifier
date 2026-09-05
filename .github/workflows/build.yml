@@ -14,6 +14,10 @@ on:
         required: false
         default: ""
 
+# 创建 tag / Release 需要 GITHUB_TOKEN 具备写权限
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -49,7 +53,7 @@ jobs:
       - name: 上传构建产物（Artifact）
         uses: actions/upload-artifact@v4
         with:
-          name: UsbFlashToast-win-x64
+          name: UsbNotifier-win-x64
           path: bin/Release/net8.0-windows10.0.22621.0/win-x64/
           retention-days: 14
 
@@ -61,7 +65,7 @@ jobs:
         if: ${{ inputs.upload_release == true }}
         shell: pwsh
         run: |
-          Compress-Archive -Path "publish/*" -DestinationPath "UsbFlashToast-${{ inputs.version }}-win-x64.zip"
+          Compress-Archive -Path "publish/*" -DestinationPath "UsbNotifier-${{ inputs.version }}-win-x64.zip"
 
       - name: 创建 Release
         if: ${{ inputs.upload_release == true }}
@@ -69,5 +73,5 @@ jobs:
         with:
           tag_name: ${{ inputs.version }}
           name: UsbFlashToast ${{ inputs.version }}
-          files: UsbFlashToast-${{ inputs.version }}-win-x64.zip
+          files: UsbNotifier-${{ inputs.version }}-win-x64.zip
           generate_release_notes: true
