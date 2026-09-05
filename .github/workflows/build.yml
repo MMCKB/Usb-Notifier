@@ -1,0 +1,73 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      upload_release:
+        description: "上传到 Release"
+        type: boolean
+        required: true
+        default: false
+      version:
+        description: "版本号（上传 Release 时必填，如 v1.0.0）"
+        type: string
+        required: false
+        default: ""
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: 校验版本号
+        if: ${{ inputs.upload_release == true }}
+        shell: bash
+        run: |
+          if [ -z "${{ inputs.version }}" ]; then
+            echo "::error::勾选了上传 Release，但未填写版本号"
+            exit 1
+          fi
+          if ! [[ "${{ inputs.version }}" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::版本号格式应为 v1.0.0 或 1.0.0"
+            exit 1
+          fi
+
+      - name: 上传构建产物（Artifact）
+        uses: actions/upload-artifact@v4
+        with:
+          name: UsbFlashToast-win-x64
+          path: bin/Release/net8.0-windows10.0.22621.0/win-x64/
+          retention-days: 14
+
+      - name: 自包含发布（Release 用）
+        if: ${{ inputs.upload_release == true }}
+        run: dotnet publish -c Release -r win-x64 --self-contained true -o publish
+
+      - name: 打包 zip
+        if: ${{ inputs.upload_release == true }}
+        shell: pwsh
+        run: |
+          Compress-Archive -Path "publish/*" -DestinationPath "UsbFlashToast-${{ inputs.version }}-win-x64.zip"
+
+      - name: 创建 Release
+        if: ${{ inputs.upload_release == true }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.version }}
+          name: UsbFlashToast ${{ inputs.version }}
+          files: UsbFlashToast-${{ inputs.version }}-win-x64.zip
+          generate_release_notes: true
